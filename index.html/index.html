@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luxury Perfume</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+<div class="loader-logo">RINAS</div>
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">PERFUME</div>
+
+<ul>
+<li><a onclick="showHomePage()">الرئيسية</a></li>
+<li><a onclick="showPerfumePage()">العطور</a></li>
+<li><a onclick="showHomePage(); setTimeout(function(){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }, 200);">اتصل بنا</a></li>
+<li><a href="#about">من نحن</a></li>
+</ul>
+
+<div class="nav-actions">
+<div class="cart-box" onclick="toggleCart()" title="عرض السلة">
+🛒
+<span class="cart-count-badge" id="cartCount">0</span>
+</div>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content container">
+
+<h1>Rinas Perfumer</h1>
+
+<p>
+اكتشف عالمًا من العطور الفاخرة المصممة لتترك أثرًا لا يُنسى
+</p>
+
+<button class="btn" onclick="scrollToPerfumes()">تسوق الآن</button>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<div class="container">
+
+<h2 class="title">أفضل العطور</h2>
+
+<div class="products row g-4 justify-content-center">
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center reveal-card">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679834_121.jpg" alt="DIOR Perfume">
+
+<div class="card-content">
+
+<h3>DIOR</h3>
+
+<button class="btn" onclick="openProductDetails('DIOR Perfume', 1000, 'img/5825484660530679834_121.jpg', 'عطر فاخر يتميز برائحة أنثوية راقية وثابتة.', '100ml', 'عطر زهري فاكهي فاخر يدمج بين انتعاش الكمثرى والبرغموت، وقلب غني بالياسمين والورد، يستقر على قاعدة دافئة من المسك والفانيليا.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center reveal-card">
+
+<div class="featured-card">
+
+<img src="img\5827736460344364417_119.jpg" alt="CHANEL Perfume">
+
+<div class="card-content">
+
+<h3>CHANEL</h3>
+
+<button class="btn" onclick="openProductDetails('CHANEL Perfume', 900, 'img/5827736460344364417_119.jpg', 'عطر كلاسيكي فاخر يناسب الإطلالات الراقية.', '100ml', '')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center reveal-card">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679854_119.jpg" alt="Libre Le (YSL) Perfume">
+
+<div class="card-content">
+
+<h3>Libre Le (YSL)</h3>
+
+<button class="btn" onclick="openProductDetails('YSL Perfume', 1100,'img/5825484660530679854_119.jpg', 'عطر شرقي فخم و دافىء', '100ml', 'عبارة عن مزيج فخم و وسويتي دافئ يجمع بين اللافندر، العسل، والزعفران. وهو عطر شتوي، ثقيل، ومثالي للمناسبات الفخمة.')">شراء الآن</button>
+</div>
+
+</div>/
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PERFUME COLLECTION -->
+<section class="collection-section" id="perfumeCollection">
+
+<div class="container">
+
+<button class="back-home-btn" onclick="showHomePage()">الرجوع للرئيسية</button>
+
+<h2 class="collection-title">Luxury Collection</h2>
+
+<p class="collection-subtitle">
+اكتشف تشكيلتنا الكاملة من العطور الفاخرة مع إمكانية البحث والفلترة حسب النوع
+</p>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن عطر مثل DIOR أو CHANEL">
+</div>
+
+<div class="filter-buttons">
+
+<button class="filter-btn active" onclick="filterPerfumes('all', this)">الكل</button>
+<button class="filter-btn" onclick="filterPerfumes('women', this)">نسائي</button>
+<button class="filter-btn" onclick="filterPerfumes('men', this)">رجالي</button>
+<button class="filter-btn" onclick="filterPerfumes('luxury', this)">فاخر</button>
+<button class="filter-btn" onclick="filterPerfumes('oriental', this)">شرقي</button>
+
+</div>
+
+<div class="row g-4 justify-content-center" id="perfumeGrid">
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women luxury" data-name="dior">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679834_121.jpg" alt="DIOR Perfume">
+
+<div class="card-content">
+
+<h3>DIOR</h3>
+
+<button class="btn" onclick="openProductDetails('DIOR Perfume', 1000, 'img/5825484660530679834_121.jpg', 'عطر فاخر يتميز برائحة أنثوية راقية وثابتة.', '100ml', 'ورد، مسك، فانيليا، أخشاب ناعمة')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women" data-name="chanel">
+
+<div class="featured-card">
+
+<img src="img\5827736460344364417_119.jpg" alt="CHANEL Perfume">
+
+<div class="card-content">
+
+<h3>CHANEL</h3>
+
+<button class="btn" onclick="openProductDetails('CHANEL Perfume', 900, 'img/5827736460344364417_119.jpg', 'عطر كلاسيكي فاخر يناسب الإطلالات الراقية.', '100ml', 'ياسمين، ورد، حمضيات، مسك أبيض')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women oriental luxury" data-name="ysl libre">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679854_119.jpg" alt="Libre Le (YSL) Perfume">
+
+<div class="card-content">
+
+<h3>Libre Le (YSL)</h3>
+
+<button class="btn" onclick="openProductDetails('YSL Perfume', 1100, 'img/5825484660530679854_119.jpg',  'عطر شرقي فخم و دافىء', '90ml', 'عنبر، أخشاب، زهور، لمسة حمضية')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men" data-name="gucci">
+
+<div class="featured-card">
+
+<img src="img\5829988260158050018_121.jpg" alt="GUCCI Perfume">
+
+<div class="card-content">
+
+<h3>GUCCI</h3>
+<button class="btn" onclick="openProductDetails('GUCCI Perfume', 790, 'img/5829988260158050018_121.jpg', 'عطر فاخر بلمسة عصرية جذابة وثبات طويل.', '100ml', 'عطر منعش وخشبى، يدمج بين حيوية الحمضيات ونظافة اللافندر، ليستقر على قاعدة خشبية دافئة وفخمة. وتوحي قطع الثلج والدخان في الصورة بانتعاشه الأولي وجاذبيته الغامضة.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men oriental" data-name="afnan 9pm">
+
+<div class="featured-card">
+
+<img src="img\5829988260158050017_121.jpg" alt="AFNAN 9PM">
+
+<div class="card-content">
+
+<h3>AFNAN 9PM</h3>
+
+<button class="btn" onclick="openProductDetails('AFNAN 9PM Perfume', 950, 'img/5829988260158050017_121.jpg', 'عطر يتميز بأدائه القوي وثباته العالي،مما يجعله خياراً مثالياً للأمسيات،الخروجات الليلية، والأجواء الباردة.', '90ml', 'عطر فاكهي سكري دافئ، يرتكز بشكل أساسي على التفاح والقرفة والفانيليا.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men " data-name="Jean Paul ">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679791_121.jpg" alt="Jean Paul Gaultier Le Beau Le Perfume">
+
+<div class="card-content">
+
+<h3>Jean Paul Gaultier Le Beau Le</h3>
+
+<button class="btn" onclick="openProductDetails('Jean Paul Gaultier Le Beau Le Perfume', 1300, 'img/5825484660530679791_121.jpg', 'هو عطر رجالي مكثف ينتمي للعائلة الشرقية - الخشبية .', '100ml', 'عطر استوائي، غني وسكري؛ يرتكز بشكل أساسي على ثنائية الأناناس وجوز الهند مع قاعدة خشبية دافئة، وهو ممتاز جداً للأجواء الصيفية والمناسبات الرمزية بفضل لمسته الجذابة والمكثفة.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card oriental" data-name="Xerjoff">
+
+<div class="featured-card">
+
+<img src="img\5829988260158049971_121.jpg" alt="Xerjoff NAXOS Perfume">
+
+<div class="card-content">
+
+<h3>Xerjoff NAXOS</h3>
+
+<button class="btn" onclick="openProductDetails('Xerjoff NAXOS Perfume', 1200, 'img/5829988260158049971_121.jpg', 'عطر شرقي فاخر برائحة العود والعنبر.', '100ml', 'عود، عنبر، مسك، أخشاب')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women" data-name="Sì Intense">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679798_119.jpg" alt="Sì Intense">
+
+<div class="card-content">
+
+<h3>Sì Intense</h3>
+
+<button class="btn" onclick="openProductDetails('Sì Perfume', 980, 'img/5825484660530679798_119.jpg', 'عطر راقٍ يجمع بين النعومة والفخامة.', '100ml', 'مزيج دافي وفخم بين الفواكه الحمراء الحامضة-حلوة، الورد الأحمر الفخم، وقاعدة دافية من الفانيليا والأخشاب. عطر شتوي/خريفي بامتياز وله حضور قوي جداً!')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men" data-name="armani">
+
+<div class="featured-card">
+
+<img src="img\5829988260158049964_121.jpg" alt="ARMANI Perfume">
+
+<div class="card-content">
+
+<h3>ARMANI</h3>
+
+<button class="btn" onclick="openProductDetails('ARMANI Perfume', 870, 'img/5829988260158049964_121.jpg', 'عطر مميز بتركيبة عصرية وثبات جميل.', '90ml','مزيج فخم غريب بين انتعاش مية البحر والليمون، مع دفء البخور والبتشولي.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card luxury" data-name="Valentino">
+
+<div class="featured-card">
+
+<img src="img\5829988260158049986_121.jpg" alt="Valentino Perfume">
+
+<div class="card-content">
+
+<h3>Valentino</h3>
+
+<button class="btn" onclick="openProductDetails('Valentino Perfume', 1500, 'img/5829988260158049986_121.jpg', 'عطر زهري ساحر جداً ومشهور بجاذبيته القوية.', '90ml', 'عبارة عن قنبلة من الفانيليا الدافية والياسمين الفخم مع قاعدة عنبرية كراميلية.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women" data-name="miss dior">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679800_120.jpg" alt="MISS DIOR Perfume">
+
+<div class="card-content">
+
+<h3>MISS DIOR</h3>
+
+<button class="btn" onclick="openProductDetails('MISS DIOR Perfume', 1050, 'img/5825484660530679800_120.jpg', 'عطر ناعم وصيفي مناسب للإطلالات اليومية.', '100ml', 'عبارة عن باقة ورد منعشة مع مسك أبيض ناعم وحمضيات خفيفة.')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card oriental" data-name="Amouage">
+
+<div class="featured-card">
+
+<img src="img\5829988260158050021_120.jpg" alt="Amouage Perfume">
+
+<div class="card-content">
+
+<h3>Amouage</h3>
+
+<button class="btn" onclick="openProductDetails('Amouage Perfume',790, 'img/5829988260158050021_120.jpg', 'عطر شرقي حديث، فاخر ومكثف جداً', '100ml', 'كمثرى وبندق ولوز (افتتاحية)، ورد وياسمين وأوسمانثوس (قلب)، لبان وعود وخشب صندل وعنبر (قاعدة شرقية ثابتة).')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men luxury" data-name="bleu de chanel">
+
+<div class="featured-card">
+
+<img src="img\5829988260158050023_119.jpg" alt="BLEU DE CHANEL Perfume">
+
+<div class="card-content">
+
+<h3>BLEU DE CHANEL</h3>
+
+<button class="btn" onclick="openProductDetails('BLEU DE CHANEL Perfume', 1400, 'img/5829988260158050023_119.jpg', 'عطر رجالي فاخر برائحة أنيقة ومنعشة.', '100ml', 'جريب فروت وليمون وفلفل وردي (افتتاحية)، زنجبيل وجوزة الطيب (قلب)، خشب الصندل والأرز والبخور (قاعدة خشبية فخمة).')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card women" data-name="Dolce & Gabbana (D&G)">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679790_121.jpg" alt="Dolce & Gabbana (D&G) Perfume">
+
+<div class="card-content">
+
+<h3>Dolce & Gabbana (D&G)</h3>
+
+<button class="btn" onclick="openProductDetails('Dolce & Gabbana (D&G) Perfume', 1150, 'img/5825484660530679790_121.jpg', 'عطر نسائي راقٍ بلمسة كلاسيكية عصرية.', '100ml', '')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center perfume-item reveal-card men luxury" data-name="Versace Eros">
+
+<div class="featured-card">
+
+<img src="img\5825484660530679794_121.jpg" alt="Versace Eros Perfume">
+
+<div class="card-content">
+
+<h3>Versace Eros</h3>
+
+<button class="btn" onclick="openProductDetails('Versace Eros Perfume', 1700, 'img/5825484660530679794_121.jpg', 'هذا العطر يعتبر ملك الجاذبية والمناسبات الليلية، وريحته أروماتك', '100ml', 'توليفة مثالية تجمع بين انتعاش الحمضيات والنعناع، ودفء الأخشاب والفانيليا والتونكا')">شراء الآن</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<p class="no-result" id="noResult">لا توجد عطور مطابقة للبحث</p>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="section about" id="about">
+
+<div class="container">
+
+<div class="about-wrapper">
+
+<div class="about-image-box reveal-card">
+
+<img src="img\5830004422119984781_121.jpg" alt="About Rinas Perfumer">
+
+</div>
+
+<div class="about-text reveal-card">
+
+<h2>من نحن</h2>
+
+<p>
+في <span class="about-highlight">Rinas Perfumer</span> نؤمن أن العطر ليس مجرد رائحة، بل هو لمسة فخامة تعبّر عن الشخصية وتترك أثرًا لا يُنسى.
+</p>
+
+<p>
+نختار مجموعتنا بعناية لتناسب مختلف الأذواق، من العطور الناعمة اليومية إلى الروائح الشرقية الفاخرة، مع تجربة تسوق بسيطة وأنيقة.
+</p>
+
+<div class="about-stats">
+
+<div class="stat-card">
+<h3>+500</h3>
+<span>عميل سعيد</span>
+</div>
+
+<div class="stat-card">
+<h3>+120</h3>
+<span>عطر فاخر</span>
+</div>
+
+<div class="stat-card">
+<h3>100%</h3>
+<span>منتجات أصلية</span>
+</div>
+
+</div>
+
+<button class="btn about-btn" onclick="showPerfumePage()">اكتشف مجموعتنا</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="contact-header reveal-card">
+
+<h2>اتصل بنا</h2>
+
+<p>
+يسعدنا تواصلك معنا لأي استفسار حول العطور، الطلبات، أو اختيار العطر المناسب لك.
+</p>
+
+</div>
+
+<div class="contact-wrapper">
+
+<div class="contact-info-box reveal-card">
+
+<h3>معلومات التواصل</h3>
+
+<div class="contact-item">
+<div class="contact-icon">📞</div>
+<div>
+<h4>رقم الهاتف</h4>
+<p>0912345678</p>
+</div>
+</div>
+
+<div class="contact-item">
+<div class="contact-icon">✉️</div>
+<div>
+<h4>البريد الإلكتروني</h4>
+<p>info@rinasperfume.com</p>
+</div>
+</div>
+
+<div class="contact-item">
+<div class="contact-icon">📍</div>
+<div>
+<h4>العنوان</h4>
+<p>طرابلس - ليبيا</p>
+</div>
+</div>
+
+<div class="contact-item">
+<div class="contact-icon">⏰</div>
+<div>
+<h4>أوقات العمل</h4>
+<p>من 10 صباحًا إلى 8 مساءً</p>
+</div>
+</div>
+
+</div>
+
+<div class="contact-form-box reveal-card">
+
+<h3>أرسل رسالة</h3>
+
+<input type="text" id="contactName" placeholder="الاسم الكامل">
+
+<input type="email" id="contactEmail" placeholder="البريد الإلكتروني">
+
+<textarea id="contactMessage" placeholder="اكتب رسالتك هنا"></textarea>
+
+<button class="btn" onclick="sendContactMessage()">إرسال الرسالة</button>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer-luxury">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+<h3>RINAS</h3>
+<p>
+وجهتك لاختيار العطور الفاخرة والأصلية، بتجربة تسوق أنيقة تجمع بين الذوق الرفيع وسهولة الاستخدام.
+</p>
+
+<div class="footer-social">
+
+    <a href="https://www.instagram.com/" target="_blank">
+        IG
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank">
+        FB
+    </a>
+
+    <a href="https://x.com/" target="_blank">
+        X
+    </a>
+
+</div>
+</div>
+
+<div class="footer-col">
+<h4>روابط سريعة</h4>
+<ul>
+<li onclick="showHomePage()">الرئيسية</li>
+<li onclick="showPerfumePage()">العطور</li>
+<li onclick="showHomePage(); setTimeout(function(){ document.getElementById('about').scrollIntoView({behavior:'smooth'}); }, 200);">من نحن</li>
+<li onclick="showHomePage(); setTimeout(function(){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }, 200);">اتصل بنا</li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>الأقسام</h4>
+
+<ul>
+
+<li onclick="showPerfumePage(); setTimeout(function(){ filterPerfumes('women', document.querySelectorAll('.filter-btn')[1]); }, 200);">
+عطور نسائية
+</li>
+
+<li onclick="showPerfumePage(); setTimeout(function(){ filterPerfumes('men', document.querySelectorAll('.filter-btn')[2]); }, 200);">
+عطور رجالية
+</li>
+
+<li onclick="showPerfumePage(); setTimeout(function(){ filterPerfumes('oriental', document.querySelectorAll('.filter-btn')[4]); }, 200);">
+عطور شرقية
+</li>
+
+<li onclick="showPerfumePage(); setTimeout(function(){ filterPerfumes('luxury', document.querySelectorAll('.filter-btn')[3]); }, 200);">
+عطور فاخرة
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+جميع الحقوق محفوظة © 2026 | Rinas Perfumer
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- PRODUCT DETAILS MODAL -->
+
+<div class="product-details-modal" id="productDetailsModal">
+
+<div class="product-details-box">
+
+<span class="close-details" onclick="closeProductDetails()">&times;</span>
+
+<img id="detailsImage" src="" alt="Perfume Details">
+
+<div class="product-info">
+
+<h2 id="detailsName"></h2>
+
+<div class="details-price" id="detailsPrice"></div>
+
+<p id="detailsDescription"></p>
+
+<p><strong>الحجم:</strong> <span id="detailsSize"></span></p>
+
+<p><strong>المكونات:</strong> <span id="detailsIngredients"></span></p>
+
+<div class="details-actions">
+
+<button class="details-btn add-details-btn" onclick="addCurrentProductToCart()">إضافة للسلة</button>
+
+<button class="details-btn confirm-details-btn" onclick="confirmCurrentProduct()">تأكيد الشراء</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- CHECKOUT MODAL -->
+
+<div class="checkout-modal" id="checkoutModal">
+
+<div class="checkout-box">
+
+<span class="close-checkout" onclick="closeCheckoutModal()">&times;</span>
+
+<h2>تأكيد الطلب</h2>
+
+<input type="text" id="customerName" class="checkout-input" placeholder="الاسم الكامل">
+
+<input type="text" id="customerPhone" class="checkout-input" placeholder="رقم الهاتف">
+
+<input type="text" id="customerAddress" class="checkout-input" placeholder="العنوان">
+
+<button class="send-order-btn" onclick="sendOrder()">
+إرسال الطلب
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CART SIDEBAR -->
+
+<div class="cart-sidebar" id="cartSidebar">
+
+<span class="close-cart" onclick="toggleCart()">&times;</span>
+
+<h2>🛒 السلة</h2>
+
+<div id="cartItems">
+<p class="empty-cart">السلة فارغة حاليًا</p>
+</div>
+
+<h3 id="totalPrice">المجموع: 0 د.ل</h3>
+
+<button class="checkout-btn" onclick="checkout()">إتمام الطلب</button>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
